@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../LacteosLaFe.Business/LacteosLaFe.Business.csproj" />
+  <Project Path="../LacteosLaFe.Infrastructure/LacteosLaFe.Infrastructure.csproj" />
+  <Project Path="../LacteosLaFe.View/LacteosLaFe.View.csproj" />
+  <Project Path="LacteosLaFe.Entity.csproj" />
+</Solution>
