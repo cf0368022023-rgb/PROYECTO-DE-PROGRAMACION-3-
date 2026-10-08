@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="ff8c16c2b98f" name="Fase 2 - Modelo ER">
+    <mxGraphModel dx="2189" dy="1276" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;align=center;verticalAlign=middle;labelBackgroundColor=none;" value="&lt;b style=&#39;font-size:22px&#39;&gt;Lácteos La Fe — Fase 2: Modelo Entidad–Relación&lt;/b&gt;&lt;br&gt;&lt;span style=&#39;font-size:12px&#39;&gt;Diseño lógico previo a SQL Server · PK = llave primaria · FK = llave foránea · 1:N = uno a muchos&lt;/span&gt;" vertex="1">
+          <mxGeometry height="65" width="1970" x="40" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="proveedor" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Proveedor&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdProveedor : INT IDENTITY&lt;br&gt;Nombre : NVARCHAR(100) NOT NULL&lt;br&gt;Telefono : NVARCHAR(20) NULL&lt;br&gt;Direccion : NVARCHAR(200) NULL&lt;br&gt;Estado : BIT NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="255" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="compra" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Compra&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdCompra : INT IDENTITY&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdProveedor : INT NOT NULL&lt;br&gt;NumeroFactura : NVARCHAR(50) NOT NULL&lt;br&gt;FechaCompra : DATETIME NOT NULL&lt;br&gt;Total : DECIMAL(12,2) NOT NULL&lt;br&gt;EstadoPago : NVARCHAR(15) NOT NULL&lt;br&gt;FechaPago : DATETIME NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="245" width="290" x="340" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="detallecompra" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;DetalleCompra&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdDetalleCompra : INT IDENTITY&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdCompra : INT NOT NULL&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdProducto : INT NOT NULL&lt;br&gt;Cantidad : DECIMAL(12,2) NOT NULL&lt;br&gt;CantidadGuacales : INT NULL&lt;br&gt;CostoUnitario : DECIMAL(10,2) NOT NULL&lt;br&gt;Subtotal : DECIMAL(12,2) NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="250" width="315" x="680" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="producto" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Producto&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdProducto : INT IDENTITY&lt;br&gt;Nombre : NVARCHAR(100) NOT NULL&lt;br&gt;UnidadMedida : NVARCHAR(20) NOT NULL&lt;br&gt;PrecioActual : DECIMAL(10,2) NOT NULL&lt;br&gt;Estado : BIT NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="210" width="285" x="1045" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="inventario" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Inventario&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdInventario : INT IDENTITY&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdProducto : INT NOT NULL&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdUbicacion : INT NOT NULL&lt;br&gt;Existencia : DECIMAL(12,2) NOT NULL&lt;br&gt;CantidadGuacales : INT NULL&lt;br&gt;FechaActualizacion : DATETIME NOT NULL&lt;br&gt;&lt;b&gt;[UQ]&lt;/b&gt; IdProducto + IdUbicacion : COMBINACION UNICA&lt;/div&gt;" vertex="1">
+          <mxGeometry height="245" width="310" x="1380" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ubicacion" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Ubicacion&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdUbicacion : INT IDENTITY&lt;br&gt;Nombre : NVARCHAR(50) NOT NULL&lt;br&gt;Descripcion : NVARCHAR(150) NULL&lt;br&gt;Estado : BIT NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="275" x="1735" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="cliente" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Cliente&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdCliente : INT IDENTITY&lt;br&gt;Nombre : NVARCHAR(100) NOT NULL&lt;br&gt;Telefono : NVARCHAR(20) NULL&lt;br&gt;Direccion : NVARCHAR(200) NULL&lt;br&gt;Estado : BIT NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="205" width="270" x="40" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="venta" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Venta&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdVenta : INT IDENTITY&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdCliente : INT NOT NULL&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdCaja : INT NOT NULL&lt;br&gt;FechaVenta : DATETIME NOT NULL&lt;br&gt;OrigenVenta : NVARCHAR(20) NOT NULL&lt;br&gt;Total : DECIMAL(12,2) NOT NULL&lt;br&gt;EfectivoRecibido : DECIMAL(12,2) NOT NULL&lt;br&gt;Cambio : DECIMAL(12,2) NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="255" width="300" x="360" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="detalleventa" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;DetalleVenta&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdDetalleVenta : INT IDENTITY&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdVenta : INT NOT NULL&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdProducto : INT NOT NULL&lt;br&gt;Cantidad : DECIMAL(12,2) NOT NULL&lt;br&gt;PrecioUnitario : DECIMAL(10,2) NOT NULL&lt;br&gt;Subtotal : DECIMAL(12,2) NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="225" width="310" x="710" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="movimiento" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;MovimientoInventario&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdMovimiento : INT IDENTITY&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdProducto : INT NOT NULL&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdUbicacionOrigen : INT NULL&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdUbicacionDestino : INT NULL&lt;br&gt;TipoMovimiento : NVARCHAR(20) NOT NULL&lt;br&gt;Cantidad : DECIMAL(12,2) NOT NULL&lt;br&gt;CantidadGuacales : INT NULL&lt;br&gt;FechaMovimiento : DATETIME NOT NULL&lt;br&gt;Observacion : NVARCHAR(200) NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="315" width="365" x="1110" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Usuario&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdUsuario : INT IDENTITY&lt;br&gt;NombreUsuario : NVARCHAR(50) NOT NULL&lt;br&gt;Clave : NVARCHAR(250) NOT NULL&lt;br&gt;Estado : BIT NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="270" x="40" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="caja" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;verticalAlign=top;spacing=8;shadow=0;labelBackgroundColor=none;" value="&lt;div style=&#39;text-align:left;line-height:1.45&#39;&gt;&lt;b style=&#39;font-size:16px&#39;&gt;Caja&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;b&gt;[PK]&lt;/b&gt; IdCaja : INT IDENTITY&lt;br&gt;&lt;b&gt;[FK]&lt;/b&gt; IdUsuario : INT NOT NULL&lt;br&gt;FechaApertura : DATETIME NOT NULL&lt;br&gt;MontoInicial : DECIMAL(12,2) NOT NULL&lt;br&gt;FechaCierre : DATETIME NULL&lt;br&gt;TotalVentas : DECIMAL(12,2) NOT NULL&lt;br&gt;EfectivoEsperado : DECIMAL(12,2) NOT NULL&lt;br&gt;EfectivoContado : DECIMAL(12,2) NULL&lt;br&gt;Diferencia : DECIMAL(12,2) NULL&lt;br&gt;Estado : NVARCHAR(10) NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="330" width="325" x="360" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="proveedor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="compra" tooltip="Proveedor realiza muchas compras" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="compra" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="detallecompra" tooltip="Compra contiene varios detalles" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="producto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="detallecompra" tooltip="Producto puede aparecer en compras" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="cliente" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="venta" tooltip="Cliente puede tener muchas ventas" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="caja" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="venta" tooltip="Caja registra muchas ventas" value="1 : N">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="522.53" y="780" />
+              <mxPoint x="522.53" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="venta" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="detalleventa" tooltip="Venta contiene varios detalles" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="producto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="detalleventa" tooltip="Producto puede aparecer en ventas" value="1 : N">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="225" />
+              <mxPoint x="1040" y="490.05" />
+              <mxPoint x="865.05" y="490.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="producto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="inventario" tooltip="Producto puede existir en varias ubicaciones" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="ubicacion" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="inventario" tooltip="Ubicacion contiene inventarios" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="producto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="movimiento" tooltip="Producto puede tener muchos movimientos" value="1 : N">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1080" y="657.48" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="ubicacion" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="movimiento" tooltip="Ubicacion participa como origen/destino" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;startArrow=none;strokeWidth=1.4;labelBackgroundColor=none;fontColor=default;" target="caja" tooltip="Usuario puede abrir varias cajas" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="notes" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontSize=11;align=left;verticalAlign=top;spacing=8;labelBackgroundColor=none;" value="&lt;b&gt;Reglas reflejadas en el diseño&lt;/b&gt;&lt;br&gt;• La factura de proveedor se representa con Compra + DetalleCompra.&lt;br&gt;• Una compra puede quedar Pendiente y luego pasar a Pagada con FechaPago.&lt;br&gt;• El inventario oficial se controla por unidad de medida; para quesillos puede guardarse también CantidadGuacales.&lt;br&gt;• Los traslados Bodega → Sala de Ventas se registran en MovimientoInventario.&lt;br&gt;• El precio histórico de una venta queda guardado en DetalleVenta.PrecioUnitario.&lt;br&gt;• No se incluyen fiado, devoluciones, gastos, sucursales ni historial de precios." vertex="1">
+          <mxGeometry height="250" width="760" x="760" y="880" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
